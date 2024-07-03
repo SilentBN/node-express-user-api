@@ -50,4 +50,20 @@ server.get("/api/users/:id", async (req, res) => {
   }
 });
 
+// DELETE endpoint to remove a user by ID
+server.delete("/api/users/:id", async (req, res) => {
+  try {
+    const deletedUser = await User.remove(req.params.id);
+    if (deletedUser) {
+      res.status(200).json(deletedUser);
+    } else {
+      res
+        .status(404)
+        .json({ message: "The user with the specified ID does not exist" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "The user could not be removed" });
+  }
+});
+
 module.exports = server; // EXPORT YOUR SERVER instead of {}
