@@ -66,4 +66,31 @@ server.delete("/api/users/:id", async (req, res) => {
   }
 });
 
+// PUT endpoint to update a user by ID
+server.put("/api/users/:id", async (req, res) => {
+  try {
+    const { name, bio } = req.body;
+
+    // Input validation
+    if (!name || !bio) {
+      return res
+        .status(400)
+        .json({ message: "Please provide name and bio for the user" });
+    }
+
+    const updatedUser = await User.update(req.params.id, { name, bio });
+    if (updatedUser) {
+      res.status(200).json(updatedUser);
+    } else {
+      res
+        .status(404)
+        .json({ message: "The user with the specified ID does not exist" });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "The user information could not be modified" });
+  }
+});
+
 module.exports = server; // EXPORT YOUR SERVER instead of {}
