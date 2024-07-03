@@ -19,6 +19,6 @@
     "url": "git+https://github.com/BloomInstituteOfTechnology/node-api1-project.git"
   },
   "dependencies": {
-    "nanoid": "^3.3.4"
+    "nanoid": "^5.0.7"
   }
 }
