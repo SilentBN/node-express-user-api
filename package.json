@@ -9,7 +9,7 @@
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
+    "@babel/core": "^7.24.9",
     "@babel/plugin-transform-modules-commonjs": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@types/jest": "^29.5.12",
